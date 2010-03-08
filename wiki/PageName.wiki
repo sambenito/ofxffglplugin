@@ -7,7 +7,7 @@ Daniel Berio 2010
 http://www.enist.org
 
 For any info
-mail@resolume.com
+mailto:mail@resolume.com
 
 For more info in FFGL:
 http://freeframe.sourceforge.net/
@@ -34,31 +34,65 @@ _Color parameters are not yet supported, but you can easily use float instead._
 copy one of the example projects.
 
 in main.cpp:
-  *In the DEFINE_FFGL_PLUGIN macro 
+  * In the DEFINE_FFGL_PLUGIN macro 
   change testApp with your App class name, if it is different.
   And set min and max input textures.
 	
-  *Customize the CFFGLPluginInfo struct:
+  * Customize the CFFGLPluginInfo struct:
 {{{
 static CFFGLPluginInfo PluginInfo (
-	createPluginInstance,					// * Default creation method ( created with the DEFINE_FFGL_PLUGIN macro )
+	createPluginInstance,	// * Default creation method ( created with the DEFINE_FFGL_PLUGIN macro )
 	
-	"OFEX",									// Plugin unique ID. This must be different for every plugin and 4 characters long.
-	"OFTest1",								// Plugin name
+	"OFEX",			// Plugin unique ID. This must be different for every plugin and 4 characters long.
+	"OFTest1",		// Plugin name
 	
-	1,										// * API major version number
-	500,									// * API minor version number
-	1,										// Plugin major version number
-	000,									// Plugin minor version number
+	1,			// * API major version number
+	500,			// * API minor version number
+	1,			// Plugin major version number
+	000,			// Plugin minor version number
 	
-	FF_SOURCE,								// Plugin type FF_SOURCE or FF_EFFECT ( filters ) 
-	"Test OpenFrameworks Plugin",			// Plugin description
-	"by Daniel Berio - www.enist.org"		// About
+	FF_SOURCE,		// Plugin type FF_SOURCE or FF_EFFECT ( filters ) 
+	"Test OpenFrameworks Plugin",		// Plugin description
+	"by Daniel Berio - www.enist.org"	// About
 	
-	,0										// *
-	,NULL									// *
+	,0					// *
+	,NULL					// *
 );
 }}}
 
 _It is important that every plugin has a 4 character identifier. This must be different for every FFGL plugin._
 
+
+The App class MUST be derived from ofFFGLApp.
+If you want to convert an existing openFrameworks app to FFGL, simply change the derivation from ofBaseApp to ofFFGLApp.
+
+
+To add custom parameters go to the constructor of the class, and use the custom functions in ofFFGLApp:
+
+{{{
+addFloatParameter( const char * name, float * address, float min = 0.0f, float max = 1.0f );
+addBoolParameter( const char * name, bool * address );
+addStringParameter( const char * name, char * address );
+}}}
+
+example:
+
+{{{
+	addFloatParameter("test float", &myFloat, 0.0f, 100.0f );
+}}}
+
+the variable myFloat MUST be declared in the class, since we are passing in it's address.
+
+At this point any variable linked with the plugin will be automatically modified by the host.
+
+
+
+If you want to do something when a parameter change, you can override the function:
+ 
+{{{	
+virtual void onParameterChanged( ofFFGLParameter * param )
+}}}
+	
+you can test the name or the address of the parameter to know which one has changed.
+	
+	
