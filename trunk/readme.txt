@@ -3,10 +3,15 @@
 
 ofxFFGLPlugin addon for openFrameworks
 Daniel Berio 2010
+for Resolume.
+
+http://www.resolume.com
 http://www.enist.org
 
 For any info
 mail@resolume.com
+
+
 
 For more info in FFGL:
 http://freeframe.sourceforge.net/
@@ -99,7 +104,15 @@ If you want to do something when a parameter change, you can override the functi
 you can test the name or the address of the parameter to know which one has changed.
 	
 	
-	
+-------------------------------------------------------------------------------------------------
+
+For an FFGL host, check out Resolume @ http://www.resolume.com
+In the Video Preferences you can specify the directories where resolume searches for plugins at startup.
+
+For a openFrameworks FreeFrame host check out 
+http://github.com/prisonerjohn/openFrameworks/tree/master/addons/ofxFreeFrame/
+
+
 ... This should be it
 
 
