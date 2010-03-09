@@ -24,7 +24,13 @@ ofFFGLApp::~ofFFGLApp()
 	parameters.clear();
 
 	for( int i = 0; i < MAX_INPUT_TEXTURES; i++ )
-		if( inputTextures[i] ) delete inputTextures[i];
+	{
+		if( inputTextures[i] ) 
+		{
+			inputTextures[i]->texData.textureID = 0; // prevent OF from deleting the actual GL texture since it is allocated by host
+			delete inputTextures[i];
+		}
+	}
 }
 
 
