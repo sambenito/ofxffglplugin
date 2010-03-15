@@ -36,6 +36,12 @@ void ofFFGLPlugin::initParameters()
 		
 		switch( v->getType() )
 		{
+			case PARAM_BOOL:
+			{
+				SetParamInfo(i, v->getName(), FF_TYPE_BOOLEAN, v->getBool());
+				break;
+			}
+			
 			case PARAM_FLOAT:
 			{
 				SetParamInfo(i, v->getName(), FF_TYPE_STANDARD, v->getFloat());
@@ -185,6 +191,7 @@ DWORD ofFFGLPlugin::GetParameter(DWORD dwIndex)
 	
 	switch(v->getType())
 	{
+		
 		case PARAM_FLOAT:
 		{
 			float val = (v->getFloat() - v->getMin()) / (v->getMax()-v->getMin());
@@ -198,6 +205,13 @@ DWORD ofFFGLPlugin::GetParameter(DWORD dwIndex)
 			dwRet = (DWORD)str;
 			return dwRet;
 		}
+		
+		case PARAM_BOOL:
+		{
+			*((float *)(unsigned)&dwRet) = v->getBool();
+			return dwRet;
+		}
+		
 		
 		default:
 		{
@@ -219,6 +233,8 @@ DWORD ofFFGLPlugin::SetParameter(const SetParameterStruct* pParam)
 	
 	switch(v->getType())
 	{
+		
+			
 		case PARAM_FLOAT:
 		{
 			float val =  *((float *)(unsigned)&(pParam->NewParameterValue));
@@ -234,6 +250,14 @@ DWORD ofFFGLPlugin::SetParameter(const SetParameterStruct* pParam)
 			v->setString(str);
 			_app->onParameterChanged(v);
 
+			return FF_SUCCESS;
+		}
+		
+		case PARAM_BOOL:
+		{
+			float val =  *((float *)(unsigned)&(pParam->NewParameterValue));
+			v->setBool((bool)val);
+			_app->onParameterChanged(v);
 			return FF_SUCCESS;
 		}
 		
@@ -261,7 +285,6 @@ char*	ofFFGLPlugin::GetParameterDisplay(DWORD dwIndex)
 	{
 		case PARAM_FLOAT:
 			sprintf(_paramDisplay,"%g",v->getFloat());
-			printf("Parameter %s\n",_paramDisplay);
 			return _paramDisplay;
 			
 		case PARAM_BOOL:
