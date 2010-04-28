@@ -44,7 +44,7 @@ void ofFFGLPlugin::initParameters()
 			
 			case PARAM_FLOAT:
 			{
-				SetParamInfo(i, v->getName(), FF_TYPE_STANDARD, v->getFloat());
+				SetParamInfo(i, v->getName(), FF_TYPE_STANDARD, v->getFloat01());
 				break;
 			}
 			
@@ -95,18 +95,17 @@ void	ofFFGLPlugin::setupInputTextures(ProcessOpenGLStruct* pGL)
 		FFGLTextureStruct &tex = *(pGL->inputTextures[i]);
 		ofTexture * ofTex = _app->inputTextures[i];
 		
-		// from ofQC by vade.
-	//?	ofTex->texData.textureName[0] = newTextureID;
+		// adapted from ofQC by vade.
 		ofTex->texData.textureID = tex.Handle;
 		ofTex->texData.textureTarget = GL_TEXTURE_2D;
 		ofTex->texData.width = tex.Width;
 		ofTex->texData.height = tex.Height;
 		ofTex->texData.bFlipTexture = true;
-		ofTex->texData.tex_w = tex.Width;
-		ofTex->texData.tex_h = tex.Height;
-		ofTex->texData.tex_t = 1.0f;
-		ofTex->texData.tex_u = 1.0f;
-		ofTex->texData.glTypeInternal = GL_RGBA; 
+		ofTex->texData.tex_w = tex.HardwareWidth;
+		ofTex->texData.tex_h = tex.HardwareHeight;
+		ofTex->texData.tex_t = ((float)tex.Width) / tex.HardwareWidth;
+		ofTex->texData.tex_u = ((float)tex.Height) / tex.HardwareHeight;
+		ofTex->texData.glTypeInternal = GL_RGBA;  // this is just a guess...
 		ofTex->texData.glType = GL_RGBA;
 		ofTex->texData.bAllocated = true;
 	}
@@ -122,8 +121,8 @@ DWORD	ofFFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct* pGL)
 	setupInputTextures(pGL);
 	
 	
-	GLint vp[4];
-	glGetIntegerv(GL_VIEWPORT,vp);
+//	GLint vp[4];
+//	glGetIntegerv(GL_VIEWPORT,vp);
 	
 	GLint mmode;
 	glGetIntegerv(GL_MATRIX_MODE,&mmode);
@@ -145,6 +144,7 @@ DWORD	ofFFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct* pGL)
 	glLoadIdentity();
 	
 
+	// this could be optimized...alot
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	
 	// draw
@@ -165,7 +165,29 @@ DWORD	ofFFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct* pGL)
 	
 	glMatrixMode(mmode);
 	
+	// we reset the host fbo id here
+	// in case we have been rendering offscreen in the plugin.
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,pGL->HostFBO);
 	
+	// TODO it may be necessary to even do this:
+	// but it's a bit of a hack....
+	
+	/*if( pGL->HostFBO )
+	{
+		glDrawBuffer(GL_BACK);
+		glReadBuffer(GL_BACK);
+	}
+	else 
+	{
+		glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
+		glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
+	}
+	*/
+	
+	// ... and it would be better if host handles these things 
+		
+
+
 	return FF_SUCCESS;
 }
 

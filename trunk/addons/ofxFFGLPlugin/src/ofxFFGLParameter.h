@@ -48,10 +48,17 @@ public:
 	void setString( const char * val );
 	
 	////////////////////////////////////////////
-	// 
+	
 	float getFloat();
 	bool  getBool();
 	const char* getString();
+	
+	/// get float value in 0.0-1.0 range
+	float getFloat01() {
+		float f = getFloat();
+		return (f-_min) / (_max-_min);
+	}
+	
 	
 	float getMin() const { return _min; }
 	float getMax() const { return _max; }
