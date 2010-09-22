@@ -304,6 +304,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -400,7 +402,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>648F112111453D56004C2653</string>
+										<string>64AA95CF1249F18000FDE7FE</string>
 										<key>history</key>
 										<array>
 											<string>64C2276A1114A19600C2C430</string>
@@ -418,7 +420,7 @@
 											<string>648F10D2114531E5004C2653</string>
 											<string>648F10D3114531E5004C2653</string>
 											<string>648F111911453D40004C2653</string>
-											<string>648F111C11453D44004C2653</string>
+											<string>64AA95A61249F12C00FDE7FE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -432,18 +434,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1006, 526}}</string>
+								<string>{{0, 0}, {1006, 499}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1440 819 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>526pt</string>
+							<string>499pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>225pt</string>
+							<string>252pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -457,7 +459,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1006, 198}}</string>
+										<string>{{10, 27}, {1006, 225}}</string>
+										<key>RubberWindowFrame</key>
+										<string>0 59 1440 819 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -512,8 +516,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1006, 198}}</string>
-										<key>RubberWindowFrame</key>
-										<string>0 59 1440 819 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -541,11 +543,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>648F112211453D56004C2653</string>
+				<string>64AA95D01249F18000FDE7FE</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>648F112311453D56004C2653</string>
+				<string>64AA95D11249F18000FDE7FE</string>
 				<string>649207A11030CE2800A2464E</string>
-				<string>648F112411453D56004C2653</string>
+				<string>64AA95D21249F18000FDE7FE</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -720,7 +722,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>289750358.17268401</real>
+	<real>306835840.91719103</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -735,7 +737,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/ensta/Desktop/ofxFFGLPlugin/apps/addonsExamples/ffglEffectExample/ffglEffectExample.xcodeproj</string>
+		<string>/Users/ensta/Documents/work/code/resolumeWorkspace/ofxFFGLPlugin/apps/addonsExamples/ffglEffectExample/ffglEffectExample.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1440 819 0 0 1440 878 </string>

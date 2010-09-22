@@ -87,23 +87,26 @@ To add custom parameters go to the constructor of the class, and use the custom 
 
 addFloatParameter( const char * name, float * address, float min = 0.0f, float max = 1.0f );
 addBoolParameter( const char * name, bool * address );
-addStringParameter( const char * name, char * address );
+addStringParameter( const char * name, std::string * address );
+addCStringParameter( const char * name, char * address );
 
 example:
 	addFloatParameter("test float", &myFloat, 0.0f, 100.0f );
 
-the variable myFloat MUST be declared in the class, since we are passing in it's address.
+the variable passed to add…Parameter MUST be declared in the class, since we are passing in it's address.
 
 At this point any variable linked with the plugin will be automatically modified by the host.
 
 
 
-If you want to do something when a parameter change, you can override the function 
+If you want to do something when a parameter changes, it is possible to ovverride the function 
 	virtual void onParameterChanged( ofFFGLParameter * param )
 	
 you can test the name or the address of the parameter to know which one has changed.
 	
-	
+
+Once the plugin is compiled, move the .bundle ( on Mac ) or the .dll file ( on Windows ) to the plugin directory of the host.
+
 -------------------------------------------------------------------------------------------------
 
 For an FFGL host, check out Resolume @ http://www.resolume.com

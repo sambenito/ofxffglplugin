@@ -22,7 +22,7 @@ class ofFFGLApp : public ofBaseApp {
         ofFFGLApp();
 		virtual ~ofFFGLApp();
 		
-		/// override this to do something when a parameter is changed
+		/// override this to do something when a parameter has changed
 		virtual void onParameterChanged( ofFFGLParameter * param ) {}
 		
 		vector < ofFFGLParameter * > parameters;
@@ -36,9 +36,14 @@ class ofFFGLApp : public ofBaseApp {
 		// We could add normal FFGL parameter handling but this way even though it is more limited, it makes life much easier
 		// Parameters MUST be added in the constructor or FFGL will ignore them.
 		
+		/// Add floating point parameter
 		void addFloatParameter( const char * name, float * address, float min = 0.0f, float max = 1.0f );
+		/// Add boolean parameter
 		void addBoolParameter( const char * name, bool * address );
-		void addStringParameter( const char * name, char * address );
+		/// Add string parameter
+		void addStringParameter( const char * name, std::string * address );
+		/// Add C String paramter ( a buffer of chars with termination character '\0' at the end )
+		void addCStringParameter( const char * name, char * address );
 		
 		ofTexture * inputTextures[MAX_INPUT_TEXTURES];
 		

@@ -148,9 +148,14 @@ DWORD getParameterDefault(DWORD index)
 	void* pValue = s_pPrototype->GetParamDefault(index);
 	if (pValue == NULL) return FF_FAIL;
 	else {
-		DWORD dwRet;
-		memcpy(&dwRet, pValue, 4);
-		return dwRet;
+		if( s_pPrototype->GetParamType(index) == FF_TYPE_TEXT ){
+			return (DWORD)pValue;	// return address of string if text parameters, else we would be copying the first for bytes 
+									// of the string into return value
+		}else{
+			DWORD dwRet;
+			memcpy(&dwRet, pValue, 4);
+			return dwRet;
+		}
 	}
 }
 

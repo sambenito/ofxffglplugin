@@ -66,6 +66,7 @@ public:
 protected:
 	char _paramDisplay[128];
 	
+	bool isGLInitialized;
 	
 	ofFFGLApp *  	_app;
 	ofFFGLWindow *  _ofWin;

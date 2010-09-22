@@ -20,10 +20,13 @@ ofFFGLPlugin::ofFFGLPlugin( ofFFGLApp * app, int minInputs, int maxInputs )
 	_app = app;
 
 	initParameters();
+	
+	isGLInitialized = false;
 }
 
 ofFFGLPlugin::~ofFFGLPlugin()
 {
+	isGLInitialized = false;
 }
 	
 
@@ -73,13 +76,14 @@ DWORD ofFFGLPlugin::InitGL(const FFGLViewportStruct *vp)
 	//NSString* dataPath = [NSString stringWithFormat:@"%@/Contents/Resources/Data/", [[NSBundle bundleForClass:[self class]] bundlePath]];
 	//ofSetDataPathRoot([dataPath cString]);
 	
-	
+	isGLInitialized = true;
 	return FF_SUCCESS;
 }
 
 DWORD ofFFGLPlugin::DeInitGL()
 {
 	_app->exit();
+	isGLInitialized = false;
 	return FF_SUCCESS;
 }
 	
@@ -116,6 +120,9 @@ void	ofFFGLPlugin::setupInputTextures(ProcessOpenGLStruct* pGL)
 
 DWORD	ofFFGLPlugin::ProcessOpenGL(ProcessOpenGLStruct* pGL)
 {
+	if(!isGLInitialized)
+		return FF_SUCCESS;
+		
 	_ofWin->update();
 	
 	setupInputTextures(pGL);
@@ -221,6 +228,7 @@ DWORD ofFFGLPlugin::GetParameter(DWORD dwIndex)
 			return dwRet;
 		}	
 		
+		case PARAM_CSTRING:
 		case PARAM_STRING:
 		{
 			const char * str = v->getString();
@@ -266,6 +274,7 @@ DWORD ofFFGLPlugin::SetParameter(const SetParameterStruct* pParam)
 			return FF_SUCCESS;
 		}	
 		
+		case PARAM_CSTRING:
 		case PARAM_STRING:
 		{
 			char * str = (char*)(pParam->NewParameterValue);

@@ -304,6 +304,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -352,7 +354,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>0</integer>
+									<integer>18</integer>
+									<integer>17</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -384,8 +387,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -403,7 +404,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>648F114711453DB3004C2653</string>
+										<string>64AA95F81249F1A900FDE7FE</string>
 										<key>history</key>
 										<array>
 											<string>64C2276A1114A19600C2C430</string>
@@ -416,7 +417,7 @@
 											<string>649AD91C1129AF5A00539933</string>
 											<string>642DD3E4113EC595008A5B04</string>
 											<string>642DD3F1113EC5CB008A5B04</string>
-											<string>648F10F311453D10004C2653</string>
+											<string>648F114711453DB3004C2653</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -430,18 +431,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1114, 492}}</string>
+								<string>{{0, 0}, {1114, 477}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 59 1440 819 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>492pt</string>
+							<string>477pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>259pt</string>
+							<string>274pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -455,7 +456,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1114, 232}}</string>
+										<string>{{10, 27}, {1114, 247}}</string>
 										<key>RubberWindowFrame</key>
 										<string>0 59 1440 819 0 0 1440 878 </string>
 									</dict>
@@ -539,11 +540,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>648F114811453DB3004C2653</string>
+				<string>64AA95F91249F1A900FDE7FE</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>648F114911453DB3004C2653</string>
+				<string>64AA95FA1249F1A900FDE7FE</string>
 				<string>649207A11030CE2800A2464E</string>
-				<string>648F114A11453DB3004C2653</string>
+				<string>64AA95FB1249F1A900FDE7FE</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -718,7 +719,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>289750451.94425398</real>
+	<real>306835881.14476901</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -733,7 +734,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/ensta/Desktop/ofxFFGLPlugin/apps/addonsExamples/ffglSourceExample/ffglSourceExample.xcodeproj</string>
+		<string>/Users/ensta/Documents/work/code/resolumeWorkspace/ofxFFGLPlugin/apps/addonsExamples/ffglSourceExample/ffglSourceExample.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 59 1440 819 0 0 1440 878 </string>
