@@ -48,7 +48,14 @@ void ofFFGLApp::addBoolParameter( const char * name, bool * address )
 	parameters.push_back(p);
 }
 
-void ofFFGLApp::addStringParameter( const char * name, char * address )
+void ofFFGLApp::addCStringParameter( const char * name, char * address )
+{
+	ofFFGLParameter * p = new ofFFGLParameter();
+	p->initCString(name,address);
+	parameters.push_back(p);
+}
+
+void ofFFGLApp::addStringParameter( const char * name, std::string * address )
 {
 	ofFFGLParameter * p = new ofFFGLParameter();
 	p->initString(name,address);

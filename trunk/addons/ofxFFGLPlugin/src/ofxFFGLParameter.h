@@ -24,6 +24,7 @@ enum FFGL_PARAMETER_TYPE
 	PARAM_FLOAT = 0,
 	PARAM_BOOL,
 	PARAM_STRING,
+	PARAM_CSTRING,
 	PARAM_UNKNOWN  = -1
 };
 
@@ -38,7 +39,8 @@ public:
 	
 	void initFloat( const char * name, float * addr, float min = 0.0f, float max = 1.0f );
 	void initBool( const char * name, bool * addr );
-	void initString( const char * name, char * addr );
+	void initCString( const char * name, char * addr );
+	void initString( const char * name, std::string * addr );
 	
 	////////////////////////////////////////////
 	// set the value of parameter

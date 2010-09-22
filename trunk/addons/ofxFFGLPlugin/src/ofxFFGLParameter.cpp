@@ -41,13 +41,19 @@ void ofFFGLParameter::initBool( const char * name, bool * addr )
 	_name = name;
 }
 
-void ofFFGLParameter::initString( const char * name, char * addr )
+void ofFFGLParameter::initString( const char * name, std::string * addr )
 {
 	_addr = addr;
 	_type = PARAM_STRING;
 	_name = name;
 }
 
+void ofFFGLParameter::initCString( const char * name, char * addr )
+{
+	_addr = addr;
+	_type = PARAM_STRING;
+	_name = name;
+}
 
 void ofFFGLParameter::setFloat( float val )
 {
@@ -67,10 +73,24 @@ void ofFFGLParameter::setBool( bool val )
 
 void ofFFGLParameter::setString( const char * val )
 {
-	if( _type != PARAM_STRING )
-		return;
-
-	strcpy((char*)_addr, val);
+	switch( _type )
+	{
+		case PARAM_STRING:
+		{
+			std::string * str = (std::string*)_addr;
+			*str = val;
+			break;
+		}
+		
+		case PARAM_CSTRING:
+		{
+			strcpy((char*)_addr, val);
+			break;
+		}
+		
+		default:
+			break;
+	}
 }
 
 
@@ -92,8 +112,21 @@ bool  ofFFGLParameter::getBool()
 
 const char* ofFFGLParameter::getString()
 {
-	if( _type != PARAM_STRING)
-		return 0; // this could return a string version of parameter
-	
-	return (const char*)_addr;
+	switch( _type )
+	{
+		case PARAM_STRING:
+		{
+			std::string * str = (std::string*)_addr;
+			return str->c_str();
+		}
+		
+		case PARAM_CSTRING:
+		{
+			return (const char*)_addr;
+		}
+		
+		default:
+			return 0;
+			// this could return a string version of parameter
+	}
 }
