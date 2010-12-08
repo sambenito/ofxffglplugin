@@ -14,34 +14,35 @@ public:
 		void	initializeWindow();
 		void	runAppViaInfiniteLoop(ofBaseApp * appPtr);
 			
-		virtual void	hideCursor() {};
-		virtual void	showCursor() {};
+		void			hideCursor() {};
+		void			showCursor() {};
 		
-		virtual void	setWindowPosition(int x, int y);
-		virtual void	setWindowShape(int w, int h);
+		void			setWindowPosition(int x, int y);
+		void			setWindowShape(int w, int h);
 			
-		virtual int		getFrameNum();
-		virtual	float	getFrameRate();
+		int				getFrameNum();
+		float			getFrameRate();
+		double			getLastFrameTime();
 		
-		virtual ofPoint	getWindowPosition(); 
-		virtual ofPoint	getWindowSize();
-		virtual ofPoint	getScreenSize();
+		ofPoint	getWindowPosition(); 
+		ofPoint	getWindowSize();
+		ofPoint	getScreenSize();
 		
-		virtual void	setFrameRate(float targetRate);
-		virtual void	setWindowTitle(string title){}
+		void	setFrameRate(float targetRate);
+		void	setWindowTitle(string title){}
 		
-		virtual int		getWindowMode();
+		int		getWindowMode();
 		
-		virtual void	setFullscreen(bool fullscreen){}
-		virtual void	toggleFullscreen(){}
+		void	setFullscreen(bool fullscreen){}
+		void	toggleFullscreen(){}
 		
-		virtual void	enableSetupScreen(){}
-		virtual void	disableSetupScreen(){}
+		void	enableSetupScreen(){}
+		void	disableSetupScreen(){}
 	
 		// additional methods not defined in ofAppBaseWindow
 		
-		virtual void		update();
-		virtual void		draw();
+		void		update();
+		void		draw();
 
 		int					windowMode;
 		ofPoint				screenSize;
@@ -52,6 +53,8 @@ public:
 		int					nFrameCount;
 		bool				bEnableSetupScreen;
 		float				frameRate;	
+		double			lastFrameTime;
+
 };
 
 

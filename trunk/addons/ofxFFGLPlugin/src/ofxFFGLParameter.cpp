@@ -41,6 +41,13 @@ void ofFFGLParameter::initBool( const char * name, bool * addr )
 	_name = name;
 }
 
+void ofFFGLParameter::initEvent( const char * name, bool * addr )
+{
+	_addr = addr;
+	_type = PARAM_EVENT;
+	_name = name;
+}
+
 void ofFFGLParameter::initString( const char * name, std::string * addr )
 {
 	_addr = addr;
@@ -51,7 +58,7 @@ void ofFFGLParameter::initString( const char * name, std::string * addr )
 void ofFFGLParameter::initCString( const char * name, char * addr )
 {
 	_addr = addr;
-	_type = PARAM_STRING;
+	_type = PARAM_CSTRING;
 	_name = name;
 }
 
@@ -65,7 +72,7 @@ void ofFFGLParameter::setFloat( float val )
 
 void ofFFGLParameter::setBool( bool val )
 {
-	if( _type != PARAM_BOOL )
+	if( _type != PARAM_BOOL && _type != PARAM_EVENT )
 		return;
 
 	*((bool*)_addr) = val;
@@ -104,7 +111,7 @@ float ofFFGLParameter::getFloat()
 
 bool  ofFFGLParameter::getBool()
 {
-	if( _type != PARAM_BOOL )
+	if( _type != PARAM_BOOL && _type != PARAM_EVENT )
 		return false;
 	
 	return *((bool*)_addr);

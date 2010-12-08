@@ -159,6 +159,7 @@ DWORD getParameterDefault(DWORD index)
 	}
 }
 
+
 DWORD getPluginCaps(DWORD index)
 {
 	int MinInputs = -1;

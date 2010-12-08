@@ -25,6 +25,7 @@ enum FFGL_PARAMETER_TYPE
 	PARAM_BOOL,
 	PARAM_STRING,
 	PARAM_CSTRING,
+	PARAM_EVENT,
 	PARAM_UNKNOWN  = -1
 };
 
@@ -41,7 +42,11 @@ public:
 	void initBool( const char * name, bool * addr );
 	void initCString( const char * name, char * addr );
 	void initString( const char * name, std::string * addr );
-	
+
+	/// This is actually a boolean value, so use getBool and setBool to manipulate it.
+	/// See Trigger struct at end of file for a easy way to use it.
+	void initEvent( const char * name, bool * addr );
+
 	////////////////////////////////////////////
 	// set the value of parameter
 	
@@ -81,6 +86,50 @@ protected:
 	FFGL_PARAMETER_TYPE _type;
 	
 };
+
+
+/////////////////////////////////////////////////////
+/// Utility class for testing if a value changed
+/// This saves some work when a value needs to be always tested for a change, as in FFGL event parameters.
+
+// Example usage:
+//
+// In class definition:
+//		Trigger<bool> myEvent;
+
+// In constructor:
+//		addEvent("myEvent",&myEvent.val);
+
+// In update loop:
+//		if(myEvent.isTriggered())
+//			doSomething();
+
+template <class Type> struct Trigger
+{
+	Trigger() { oldVal = val = 0; }
+	
+	bool isTriggered()
+	{
+		bool res = false;
+		if( oldVal != val )
+		{
+			res = true;
+			oldVal = val;
+		}
+		
+		
+		return res;
+	}
+	
+	void reset()
+	{
+		oldVal = val;
+	}
+	
+	Type oldVal;
+	Type val;
+};
+
 
 
 
