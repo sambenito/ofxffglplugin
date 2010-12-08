@@ -116,7 +116,7 @@
 		648F104C11452579004C2653 /* ofxFFGLPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFFGLPlugin.h; sourceTree = "<group>"; };
 		648F104D11452579004C2653 /* ofxFFGLWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFFGLWindow.cpp; sourceTree = "<group>"; };
 		648F104E11452579004C2653 /* ofxFFGLWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFFGLWindow.h; sourceTree = "<group>"; };
-		648F108E11453127004C2653 /* ffglPartyclesDebug.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ffglPartyclesDebug.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		648F108E11453127004C2653 /* ffglPartycles.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ffglPartycles.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45BE0390E8CC647009D7055 /* FreeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreeImage.h; path = ../../../libs/freeimage/include/FreeImage.h; sourceTree = SOURCE_ROOT; };
 		E45BE03F0E8CC650009D7055 /* fmod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmod.h; path = ../../../libs/fmodex/include/fmod.h; sourceTree = SOURCE_ROOT; };
 		E45BE0400E8CC650009D7055 /* fmod.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = fmod.hpp; path = ../../../libs/fmodex/include/fmod.hpp; sourceTree = SOURCE_ROOT; };
@@ -451,7 +451,7 @@
 				E4C2422310CC54B6004149E2 /* openFrameworks */,
 				E44665C70F5B3E03005D0BF0 /* addons */,
 				E45BE0360E8CC5DE009D7055 /* libs */,
-				648F108E11453127004C2653 /* ffglPartyclesDebug.bundle */,
+				648F108E11453127004C2653 /* ffglPartycles.bundle */,
 			);
 			sourceTree = "<group>";
 		};
@@ -564,7 +564,7 @@
 			);
 			name = ffglPartycles;
 			productName = myOFApp;
-			productReference = 648F108E11453127004C2653 /* ffglPartyclesDebug.bundle */;
+			productReference = 648F108E11453127004C2653 /* ffglPartycles.bundle */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
