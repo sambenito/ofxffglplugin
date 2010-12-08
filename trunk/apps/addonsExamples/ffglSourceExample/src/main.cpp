@@ -28,7 +28,7 @@ DEFINE_FFGL_PLUGIN( testApp, 0, 0 );
 static CFFGLPluginInfo PluginInfo (
 	createPluginInstance,					// * Create method
 	"OFEX",									// Plugin unique ID
-	"OFTest1",								// Plugin name
+	"OFSourceExample",								// Plugin name
 	1,										// * API major version number
 	500,									// * API minor version number
 	1,										// Plugin major version number
