@@ -30,18 +30,19 @@ class testApp : public ofFFGLApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 		
-		ofVideoGrabber 		vidGrabber;
-		unsigned char * 	videoInverted;
-		ofTexture			videoTexture;
-		int 				camWidth;
-		int 				camHeight;
-
 		float _power1;
 		float _power2;
 		float _rotx;
 		float _roty;
 		float _radius;
 		float _subdivision;
+		
+		// other example parameters
+		
+		Trigger<bool> eventExample; // event
+		std::string stdString; // string
+		char cString[512]; // C string
+		
 		
 		void createSuperEllipse(double power1,double power2,int n,int method);
 		void evalSuperEllipse(double t1,double t2,double p1,double p2,XYZ *p);

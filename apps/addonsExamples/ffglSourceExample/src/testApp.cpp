@@ -25,6 +25,21 @@ testApp::testApp()
 	_subdivision = 10.0;
 	addFloatParameter("subdivision",&_subdivision,5.0,50.0);
 	
+	// Example parameters
+	
+	// event parameter using a Trigger<bool> class
+	// this will automatically handle value changes for us ( see draw() )
+	addEventParameter("flash",&eventExample.val);
+	
+	// std::string example
+	stdString = "hello world";
+	addStringParameter("std string",&stdString);
+
+	// oldschool C string with a buffer of chars
+	strcpy(cString,"hello world");
+	addCStringParameter("c string",cString);
+	
+	
 }
 
 //--------------------------------------------------------------
@@ -33,12 +48,34 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-	ofBackground(100,100,100);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	
+	
+	static float brt = 0;
+	
+	// calling isTriggered on a Trigger<> object, tells us if the internal value has changed.
+	// this is handy for handling event parameters in FFGL without having to mantain two copies of a member
+	if(eventExample.isTriggered())
+	{
+		brt = 1.0;
+	}
+	
+	brt*=1.0-ofGetLastFrameTime();
+	glClearColor(brt,brt,brt,brt);
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	
+	// draw test strings
+	ofSetupScreen();
+	
+	ofSetColor(255,255,255);
+	ofDrawBitmapString(stdString,20,20);
+	ofDrawBitmapString(cString,20,40);
+	
+	// draw ellipsoid
 	glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 	
 	glMatrixMode(GL_PROJECTION);
@@ -47,7 +84,7 @@ void testApp::draw(){
 	
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glTranslatef(0,0,-15.0f);
+	glTranslatef(0,0,-15.0f );
 	glRotatef(_rotx,1.0,0.0,0.0);
 	glRotatef(_roty,0.0,1.0,0.0);
 	
