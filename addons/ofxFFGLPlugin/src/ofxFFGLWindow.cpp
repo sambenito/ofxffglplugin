@@ -19,6 +19,7 @@ ofFFGLWindow::ofFFGLWindow()
 	timeNow, timeThen, fps	= 0.0f;
 	
 	frameRate				= 0;
+	lastFrameTime		= 0.0;
 }
 
 
@@ -51,19 +52,17 @@ void ofFFGLWindow::draw()
 {
 	
 	ofGetAppPtr()->draw();
-	
-	
-	// FPS calculation stolen from Memos code. Thanks Memo :)
 
 	timeNow = ofGetElapsedTimef();
-	if( (timeNow - timeThen) > 0)
-	{
-		fps = 1.0 / (timeNow-timeThen);
-		frameRate *= 0.9f;
-		frameRate += 0.1f*fps;
-	}
-	timeThen = timeNow;
-	
+	double diff = timeNow-timeThen;
+	if( diff  > 0.00001 ){
+		fps			= 1.0 / diff;
+		frameRate	*= 0.9f;
+		frameRate	+= 0.1f*fps;
+	 }
+	lastFrameTime	= diff;
+	timeThen		= timeNow;
+	 
 	// increase the overall frame count
 	nFrameCount++;			
 }
@@ -93,10 +92,16 @@ float ofFFGLWindow::getFrameRate()
 	return frameRate;
 }
 
-int	ofFFGLWindow::getFrameNum()
+double ofFFGLWindow::getLastFrameTime()
+{
+	return lastFrameTime;
+}
+
+int ofFFGLWindow::getFrameNum()
 {
 	return nFrameCount;
 }
+
 
 void ofFFGLWindow::setFrameRate(float targetRate)
 {	

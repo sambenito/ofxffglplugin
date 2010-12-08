@@ -51,9 +51,16 @@ void ofFFGLPlugin::initParameters()
 				break;
 			}
 			
+			case PARAM_CSTRING:
 			case PARAM_STRING:
 			{
 				SetParamInfo(i,v->getName(),FF_TYPE_TEXT,v->getString());
+				break;
+			}
+
+			case PARAM_EVENT:
+			{
+				SetParamInfo(i,v->getName(), FF_TYPE_EVENT, v->getBool() );
 				break;
 			}
 			
@@ -237,6 +244,7 @@ DWORD ofFFGLPlugin::GetParameter(DWORD dwIndex)
 		}
 		
 		case PARAM_BOOL:
+		case PARAM_EVENT:
 		{
 			*((float *)(unsigned)&dwRet) = v->getBool();
 			return dwRet;
@@ -285,6 +293,7 @@ DWORD ofFFGLPlugin::SetParameter(const SetParameterStruct* pParam)
 		}
 		
 		case PARAM_BOOL:
+		case PARAM_EVENT:
 		{
 			float val =  *((float *)(unsigned)&(pParam->NewParameterValue));
 			v->setBool((bool)val);
@@ -319,10 +328,12 @@ char*	ofFFGLPlugin::GetParameterDisplay(DWORD dwIndex)
 			return _paramDisplay;
 			
 		case PARAM_BOOL:
+		case PARAM_EVENT:
 			sprintf(_paramDisplay,"%d",v->getBool());
 			return _paramDisplay;
 			
 		case PARAM_STRING:
+		case PARAM_CSTRING:
 			return (char*)v->getString();
 	}
 	

@@ -40,6 +40,8 @@ class ofFFGLApp : public ofBaseApp {
 		void addFloatParameter( const char * name, float * address, float min = 0.0f, float max = 1.0f );
 		/// Add boolean parameter
 		void addBoolParameter( const char * name, bool * address );
+		/// Add event parameter ( is actually a boolean )
+		void addEventParameter( const char * name, bool * address );
 		/// Add string parameter
 		void addStringParameter( const char * name, std::string * address );
 		/// Add C String paramter ( a buffer of chars with termination character '\0' at the end )
