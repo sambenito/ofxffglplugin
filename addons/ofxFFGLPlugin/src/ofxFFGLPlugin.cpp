@@ -324,7 +324,7 @@ char*	ofFFGLPlugin::GetParameterDisplay(DWORD dwIndex)
 	switch( v->getType() )
 	{
 		case PARAM_FLOAT:
-			sprintf(_paramDisplay,"%g",v->getFloat());
+			sprintf(_paramDisplay,"%0.2f",v->getFloat());
 			return _paramDisplay;
 			
 		case PARAM_BOOL:
